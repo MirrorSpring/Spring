@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD 3.0//EN"
+						"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+						
+<mapper namespace="com.springlec.base.dao.ADao">
+
+	<select id="listDao" resultType="com.springlec.base.model.ADto">
+		SELECT * FROM address;
+	</select>
+	
+	<insert id="writeDao">
+		insert into address (`name`, phone, address, email, relationship) values (#{name}, #{phone}, #{address}, #{email}, #{relationship});
+	</insert>
+	
+	<select id="viewDao" resultType="com.springlec.base.model.ADto">
+		SELECT * FROM address where id=#{id};
+	</select>
+	
+	<update id="updateDao">
+		update address set `name`=#{name}, phone=#{phone}, address=#{address}, email=#{email}, relationship=#{relationship} where id=#{id};
+	</update>
+	
+	<delete id="deleteDao">
+		delete from address where id=#{id};
+	</delete>
+
+</mapper>
