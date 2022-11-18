@@ -24,5 +24,9 @@
 	<delete id="deleteDao">
 		delete from address where id=#{id};
 	</delete>
+	
+	<select id="searchDao" resultType="com.springlec.base.model.ADto">
+		SELECT * FROM address where ${condition} like #{query}; <!-- 예약어나 컬럼명은 ${} 사용 -->
+	</select>
 
 </mapper>

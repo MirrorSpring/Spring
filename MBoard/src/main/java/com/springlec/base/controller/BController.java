@@ -34,32 +34,9 @@ public class BController {
 	
 	//게시판 입력 실행
 	@RequestMapping("/write")
-	public String write(HttpServletRequest request, Model model) throws Exception{
-		service.writeDao(request.getParameter("bName"), request.getParameter("bTitle"), request.getParameter("bContent"));
+	public String write(HttpServletRequest request) throws Exception{
+		service.writeDao(request);
 		return "redirect:list";
 	}
 	
-	@RequestMapping("/content_view")
-	public String contentView(HttpServletRequest request, Model model) throws Exception{
-		BDto contentDto=service.viewDao(Integer.parseInt(request.getParameter("bId")));
-		model.addAttribute("content_view", contentDto);
-		return "content_view";
-	}
-	
-	@RequestMapping("/modify")
-	public String modify(HttpServletRequest request, Model model) throws Exception{
-		String bName=request.getParameter("bName");
-		String bTitle=request.getParameter("bTitle");
-		String bContent=request.getParameter("bContent");
-		int bId=Integer.parseInt(request.getParameter("bId"));
-		service.updateDao(bName, bTitle, bContent, bId);
-		return "redirect:list";
-	}
-	
-	@RequestMapping("/delete")
-	public String delete(HttpServletRequest request, Model model) throws Exception{
-		int bId=Integer.parseInt(request.getParameter("bId"));
-		service.deleteDao(bId);
-		return "redirect:list";
-	}
 }

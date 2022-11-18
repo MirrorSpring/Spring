@@ -38,4 +38,9 @@ public class ADaoImpl implements ADao {
 		sqlSession.delete(nameSpace + ".deleteDao");
 	}
 
+	@Override
+	public List<ADto> searchDao(String condition, String query) throws Exception {
+		return sqlSession.selectList(nameSpace + ".searchDao");
+	}
+
 }

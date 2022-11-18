@@ -40,4 +40,9 @@ public class ADaoServiceImpl implements ADaoService {
 		dao.deleteDao(id);
 	}
 
+	@Override
+	public List<ADto> searchDao(String condition, String query) throws Exception {
+		return dao.searchDao(condition, query);
+	}
+
 }

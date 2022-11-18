@@ -10,4 +10,5 @@ public interface ADao {
 	public ADto viewDao(int id) throws Exception;
 	public void updateDao(String name, String phone, String address, String email, String relationship, int id) throws Exception;
 	public void deleteDao(int id) throws Exception;
+	public List<ADto> searchDao(String condition, String query) throws Exception;
 }

@@ -22,6 +22,7 @@ public class AController {
 	public String listview(Model model) throws Exception{
 		List<ADto> listDao=service.listDao();
 		model.addAttribute("list",listDao);
+		model.addAttribute("size", listDao.size());
 		return "viewlist";
 	}
 	
@@ -70,5 +71,16 @@ public class AController {
 		service.deleteDao(id);
 		
 		return "redirect:list";
+	}
+	
+	@RequestMapping("/search")
+	public String search(HttpServletRequest request, Model model) throws Exception{
+		String condition=request.getParameter("condition");
+		String query="%" + request.getParameter("query") + "%";
+		List<ADto> dtos=service.searchDao(condition, query);
+		
+		model.addAttribute("list", dtos);
+		model.addAttribute("size", dtos.size());
+		return "viewlist";
 	}
 }
